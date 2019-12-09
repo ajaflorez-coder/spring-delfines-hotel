@@ -1,5 +1,7 @@
 package pe.edu.delfines.models.entity;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,17 +20,13 @@ public class Alquiler {
 	private Integer id;
 	
 	@Column(nullable = false)
-	private Integer numeroCamas;
-	
-	@Column(length = 60)
-	private String descripcion;
-	
-	@Column
-	private float precio;
-	
-	@Column(length = 10)
-	private String tipo_id;
-	
+	private Double precio;
+	@Column(length = 20)
+	private Date fecha_entrada;
+	@Column(length = 20)
+	private Date fecha_salida;
+	@Column(length = 1)
+	private char estado;
 	@Column(length = 60)
 	private String observacion;
 	
@@ -53,36 +51,38 @@ public class Alquiler {
 		this.id = id;
 	}
 
-	public Integer getNumeroCamas() {
-		return numeroCamas;
-	}
+	
 
-	public void setNumeroCamas(Integer numeroCamas) {
-		this.numeroCamas = numeroCamas;
-	}
-
-	public String getDescripcion() {
-		return descripcion;
-	}
-
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
-
-	public float getPrecio() {
+	public Double getPrecio() {
 		return precio;
 	}
 
-	public void setPrecio(float precio) {
+	public void setPrecio(Double precio) {
 		this.precio = precio;
 	}
 
-	public String getTipo_id() {
-		return tipo_id;
+	public Date getFecha_entrada() {
+		return fecha_entrada;
 	}
 
-	public void setTipo_id(String tipo_id) {
-		this.tipo_id = tipo_id;
+	public void setFecha_entrada(Date fecha_entrada) {
+		this.fecha_entrada = fecha_entrada;
+	}
+
+	public Date getFecha_salida() {
+		return fecha_salida;
+	}
+
+	public void setFecha_salida(Date fecha_salida) {
+		this.fecha_salida = fecha_salida;
+	}
+
+	public char getEstado() {
+		return estado;
+	}
+
+	public void setEstado(char estado) {
+		this.estado = estado;
 	}
 
 	public String getObservacion() {
