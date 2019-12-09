@@ -1,5 +1,8 @@
 package pe.edu.delfines.models.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -8,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -34,10 +38,11 @@ public class Habitacion {
 	@Column(name = "observacion", length = 100)
 	private String observacion;
 	
-	
+	@OneToMany(mappedBy="habitacion",fetch = FetchType.LAZY)
+	private List<Alquiler> alquileres;
 	
 	public Habitacion() {
-		
+		this.alquileres = new ArrayList<>();
 	}
 
 	public Tipo getTipo() {
@@ -46,5 +51,10 @@ public class Habitacion {
 
 	public void setTipo(Tipo tipo) {
 		this.tipo = tipo;
+	}
+	
+	public void addAlquiler(Alquiler alquiler) {
+		alquiler.setHabitacion(this);
+		this.alquileres.add(alquiler);
 	}
 }
