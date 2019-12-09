@@ -88,7 +88,7 @@ public class HabitacionRestController {
 	
 	
 	@DeleteMapping(path = "/{id}")
-	public ResponseEntity<Habitacion> deleteMedico(@PathVariable("id") Integer id) {
+	public ResponseEntity<Habitacion> deleteHabitacion(@PathVariable("id") Integer id) {
 		try {			
 			Optional<Habitacion> optional = habitacionService.findById(id);
 			if(optional.isPresent()) {

@@ -56,14 +56,17 @@ class DelfinesApplicationTests {
 			
 			Tipo tipo1 = new Tipo();
 			tipo1.setNombre("tipo 1");
+			tipo1.setId("T01");
 			
 			Tipo tipo2 = new Tipo();
-			tipo1.setNombre("tipo 2");
+			tipo2.setNombre("tipo 2");
+			tipo2.setId("T02");
 			
 			tipo1 = tipoRepository.save(tipo1);
 			tipo2 = tipoRepository.save(tipo2);
 			
 			Habitacion habitacion1 = new Habitacion();
+			habitacion1.setId(2);
 			habitacion1.setNumeroCamas(3);
 			habitacion1.setDescripcion("habitacion 1");
 			habitacion1.setPrecio(15.0);
@@ -71,6 +74,7 @@ class DelfinesApplicationTests {
 			habitacion1.setObservacion("buen estado");
 			
 			Habitacion habitacion2 = new Habitacion();
+			habitacion2.setId(3);
 			habitacion2.setNumeroCamas(2);
 			habitacion2.setDescripcion("habitacion 2");
 			habitacion2.setPrecio(10.0);
@@ -81,6 +85,7 @@ class DelfinesApplicationTests {
 			habitacion2 = habitacionRepository.save(habitacion2);
 			
 			Vendedor cielo = new Vendedor();
+			cielo.setId("V01");
 			cielo.setNombre("Cielo");
 			cielo.setDireccion("Av Trapiche");
 			cielo.setTelefono("22255588");
@@ -88,6 +93,7 @@ class DelfinesApplicationTests {
 			cielo.setSueldo(2000.0f);
 			
 			Vendedor fiorella = new Vendedor();
+			fiorella.setId("V02");
 			fiorella.setNombre("Cielo");
 			fiorella.setDireccion("San Miguel");
 			fiorella.setTelefono("33355557");
