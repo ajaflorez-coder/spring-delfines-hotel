@@ -11,6 +11,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name = "alquileres")
 public class Alquiler {
@@ -29,15 +31,17 @@ public class Alquiler {
 	@Column
 	private String observacion;
 	
-	
+	@JsonIgnoreProperties("alquileres")
 	@ManyToOne(fetch =FetchType.LAZY )
 	@JoinColumn(name = "vendedor_id")
 	private Vendedor vendedor; 
 	
+	@JsonIgnoreProperties("alquileres")
 	@ManyToOne(fetch =FetchType.LAZY )
 	@JoinColumn(name = "cliente_id")
 	private Cliente cliente; 
 	
+	@JsonIgnoreProperties("alquileres")
 	@ManyToOne(fetch =FetchType.LAZY )
 	@JoinColumn(name = "habitacion_id")
 	private Habitacion habitacion;

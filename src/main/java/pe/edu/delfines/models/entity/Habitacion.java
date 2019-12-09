@@ -30,6 +30,7 @@ public class Habitacion {
 	@Column(name = "precio")
 	private Float precio;
 	
+	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "tipo_id")
 	private Tipo tipo;

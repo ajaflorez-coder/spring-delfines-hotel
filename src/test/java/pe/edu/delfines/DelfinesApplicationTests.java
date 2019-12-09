@@ -1,6 +1,7 @@
 package pe.edu.delfines;
 
 import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -16,8 +17,9 @@ import pe.edu.delfines.models.repository.HabitacionRepository;
 import pe.edu.delfines.models.repository.TipoRepository;
 import pe.edu.delfines.models.repository.VendedorRepository;
 
+@RunWith(SpringRunner.class)
 @SpringBootTest
-class DelfinesApplicationTests {
+public class DelfinesApplicationTests {
 	
 	@Autowired
 	VendedorRepository _vendedorRepo;
@@ -47,8 +49,10 @@ class DelfinesApplicationTests {
 			_habita.setNumeroCamas(3);
 			_habita.setDescripcion("PA tres");
 			
-			_habitacionRepo.save(_habita);
-			_habitacionRepo.save(_habita2);
+			_habita =_habitacionRepo.save(_habita);
+			_habita2 =_habitacionRepo.save(_habita2);
+			
+			_habitacionRepo.save(_habita); 
 			
 			Cliente _cliente = new Cliente();
 			_cliente.setDocumento("DNI");
