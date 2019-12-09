@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import pe.edu.delfines.models.entity.Alquiler;
 import pe.edu.delfines.models.entity.Cliente;
 import pe.edu.delfines.services.AlquilerService;
 import pe.edu.delfines.services.ClienteService;
@@ -89,66 +90,46 @@ public class ClientesRestController {
 			return new ResponseEntity<Cliente>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
-	/*@GetMapping(path = "/{id}/pacientes")
-	public ResponseEntity<List<Paciente>> fetchPaciente(
+	@GetMapping(path = "/{id}/alquileres")
+	public ResponseEntity<List<Alquiler>> fetchAlquileres(
 			@PathVariable("id") Integer id){
 		try {
-			Optional<Medico> optional = medicoService.findById(id);
+			Optional<Cliente> optional = clienteService.findById(id);
 			if(optional.isPresent()) {
-				return new ResponseEntity<List<Paciente>>(
-						optional.get().getPacientes(), HttpStatus.OK);
+				return new ResponseEntity<List<Alquiler>>(
+						optional.get().getAlquileres(), HttpStatus.OK);
 			} else {
-				return new ResponseEntity<List<Paciente>>(
+				return new ResponseEntity<List<Alquiler>>(
 						HttpStatus.BAD_REQUEST);
 			}
 		} catch (Exception e) {
-			return new ResponseEntity<List<Paciente>>(
+			return new ResponseEntity<List<Alquiler>>(
 					HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
 	
-	@PostMapping( path = "/{id}/pacientes",
+	@PostMapping( path = "/{id}/alquileres",
 			consumes = MediaType.APPLICATION_JSON_VALUE, 
 			produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity< Paciente > savePaciente(
+	public ResponseEntity< Alquiler > saveAlquiler(
 			@PathVariable("id") Integer id,
-			@RequestBody Paciente paciente) {
+			@RequestBody Alquiler alquiler) {
 		try {
-			Optional<Medico> optional = medicoService.findById(id);
+			Optional<Cliente> optional = clienteService.findById(id);
 			if(optional.isPresent()) {				
-				paciente.setMedico( optional.get() );
-				Paciente nuevoPaciente = pacienteService.save(paciente);
-				return new ResponseEntity<Paciente>(nuevoPaciente, 
+				alquiler.setCliente( optional.get() );
+				Alquiler nuevoAlquiler = alquilerService.save(alquiler);
+				return new ResponseEntity<Alquiler>(nuevoAlquiler, 
 						HttpStatus.CREATED);
 			} else {
-				return new ResponseEntity<Paciente>(HttpStatus.BAD_REQUEST);
+				return new ResponseEntity<Alquiler>(HttpStatus.BAD_REQUEST);
 			}
 			
 		} catch (Exception e) {
-			return new ResponseEntity< Paciente >(HttpStatus.INTERNAL_SERVER_ERROR);
+			return new ResponseEntity< Alquiler >(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
-	
-	@GetMapping(path = "/mayortelefono/{telefono}", 
-			produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity< List<Medico> > MayorTelefono(
-			@PathVariable("telefono") Integer telefono) {
-		try {
-			List<Medico> medicos = medicoService.fetchMayorTelefono(telefono);
-			return new ResponseEntity<List<Medico>>(medicos, HttpStatus.OK);
-		} catch (Exception e) {
-			return new ResponseEntity<List<Medico>>(HttpStatus.INTERNAL_SERVER_ERROR);
-		}
-	}
-	@GetMapping(path = "/cantidad", produces = MediaType.TEXT_PLAIN_VALUE )
-	public ResponseEntity<String> CantidadMedico() {
-		try {
-			Integer cantidad = medicoService.fetchCantidadMedico();
-			return new ResponseEntity<String>(cantidad.toString(), HttpStatus.OK);
-		} catch (Exception e) {
-			return new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
-		}
-	}*/
+
 }
 
 
