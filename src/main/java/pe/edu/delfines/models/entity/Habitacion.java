@@ -29,7 +29,7 @@ public class Habitacion {
 	
 	@Column(name = "descripcion", length = 100)
 	private String descripcion;
-	
+
 	@Column(name = "precio")
 	private Float precio;
 	
