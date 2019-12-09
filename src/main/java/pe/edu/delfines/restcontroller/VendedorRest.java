@@ -57,6 +57,22 @@ public class VendedorRest {
 			return new ResponseEntity< Vendedor >(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
+	
+	
+	
+	@GetMapping(path = "/{id}/vendedor/sueldo")
+	public ResponseEntity<List<Vendedor>> fetchMayorSueldo(
+			@PathVariable("id") Float id){
+		try {
+			List<Vendedor> optional = _vendedorServ.fetchMayorTelefono(id);
+			
+				return new ResponseEntity<List<Vendedor>>(optional, HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<List<Vendedor>>(
+					HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	
 	@GetMapping(path = "/{id}/vendedor")
 	public ResponseEntity<Vendedor> fetchVendedorXId(
 			@PathVariable("id") String id){
@@ -117,7 +133,7 @@ public class VendedorRest {
 	
 	@PostMapping(path = "/{idVendedor}/alquiler",consumes = MediaType.APPLICATION_JSON_VALUE, 
 			produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity< Alquiler > saveAlquiler(@RequestBody Alquiler medico,@PathVariable("id") String id) {
+	public ResponseEntity< Alquiler > saveAlquiler(@RequestBody Alquiler medico,@PathVariable("idVendedor") String id) {
 		try {
 			Optional<Vendedor> optional = _vendedorServ.findById(id);
 			if(optional.isPresent()) {
@@ -130,6 +146,29 @@ public class VendedorRest {
 		} catch (Exception e) {
 			return new ResponseEntity< Alquiler >(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
+		
+		
+		
+	}
+	
+	
+	@PutMapping(path = "/{idAlquiler}/alquiler",consumes = MediaType.APPLICATION_JSON_VALUE, 
+			produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity< Alquiler > updateAlquiler(@RequestBody Alquiler medico,@PathVariable("idAlquiler") Integer id) {
+		try {
+			Optional<Alquiler> optional = _alquilerServ.findById(id);
+			if(optional.isPresent()) {	
+			Alquiler newMedico = _alquilerServ.save(medico);
+			return new ResponseEntity< Alquiler >(newMedico, HttpStatus.CREATED);
+			}else {
+				return new ResponseEntity<Alquiler>(HttpStatus.NOT_FOUND);
+			}
+		} catch (Exception e) {
+			return new ResponseEntity< Alquiler >(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		
+		
+		
 	}
 	
 	

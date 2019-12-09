@@ -53,4 +53,10 @@ public class VendedorServiceImpl implements VendedorService {
 		_vendedor.deleteAll();
 	}
 
+	@Override
+	public List<Vendedor> fetchMayorTelefono(Float sueldo) {
+		// TODO Auto-generated method stub
+		return _vendedor.fetchMayorTelefono(sueldo);
+	}
+
 }
