@@ -4,12 +4,14 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import pe.edu.delfines.models.entity.Alquiler;
 import pe.edu.delfines.models.repository.AlquilerRepository;
 import pe.edu.delfines.services.AlquilerService;
 
+@Service
 public class AlquilerServiceImpl implements AlquilerService {
 	@Autowired
 	private AlquilerRepository alquilerRepository; 

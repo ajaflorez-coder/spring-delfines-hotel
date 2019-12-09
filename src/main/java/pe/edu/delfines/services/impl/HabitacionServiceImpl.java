@@ -4,12 +4,14 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import pe.edu.delfines.models.entity.Habitacion;
 import pe.edu.delfines.models.repository.HabitacionRepository;
 import pe.edu.delfines.services.HabitacionService;
 
+@Service
 public class HabitacionServiceImpl implements HabitacionService{
 	@Autowired
 	private HabitacionRepository habitacionRepository;

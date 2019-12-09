@@ -4,12 +4,13 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import pe.edu.delfines.models.entity.Tipo;
 import pe.edu.delfines.models.repository.TipoRepository;
 import pe.edu.delfines.services.TipoService;
-
+@Service
 public class TipoServiceImpl implements TipoService{
 	@Autowired
 	private TipoRepository tipoRepository;
