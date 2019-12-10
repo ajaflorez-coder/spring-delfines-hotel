@@ -1,11 +1,19 @@
 package pe.edu.delfines.models.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import pe.edu.delfines.models.entity.Vendedor;
 
 @Repository
-public interface VendedorRepository extends JpaRepository<Vendedor, String> {
+public interface VendedorRepository extends JpaRepository<Vendedor, Integer> {
 
+	@Query("Select ve from Vendedor ve where ve.id = :id")
+	List<Vendedor> buscarVendedor(Integer id);
+	
+	@Query("Select ve from Vendedor ve where ve.sueldo > :sueldo")
+	List<Vendedor> fetchMayorSueldo(float sueldo);
 }
