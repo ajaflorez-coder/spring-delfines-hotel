@@ -55,5 +55,6 @@ public class Tipo {
 	public void setHabitaciones(List<Habitacion> habitaciones) {
 		this.habitaciones = habitaciones;
 	}
+	
 
 }
