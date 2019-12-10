@@ -15,6 +15,9 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name = "clientes")
 public class Cliente {
@@ -41,6 +44,7 @@ public class Cliente {
 	
 	@Column(name = "observacion", length = 100)
 	private String observacion;
+	
 	
 	@OneToMany(mappedBy="cliente", fetch = FetchType.LAZY)
 	private List<Alquiler> alquileres;

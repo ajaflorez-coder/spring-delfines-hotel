@@ -14,6 +14,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name = "habitaciones")
 public class Habitacion {
@@ -31,12 +34,14 @@ public class Habitacion {
 	@Column(name = "precio")
 	private Double precio;
 	
+	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "tipo_id")
 	private Tipo tipo;
 	
 	@Column(name = "observacion", length = 100)
 	private String observacion;
+	
 	
 	@OneToMany(mappedBy="habitacion",fetch = FetchType.LAZY)
 	private List<Alquiler> alquileres;

@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name = "alquileres")
 public class Alquiler {
@@ -34,9 +36,11 @@ public class Alquiler {
 	@JoinColumn(name="habitacion_id")
 	private Habitacion habitacion;
 	
+	
 	@ManyToOne
 	@JoinColumn(name = "cliente_id")
 	private Cliente cliente;
+	
 	
 	@ManyToOne
 	@JoinColumn(name = "vendedor_id")
