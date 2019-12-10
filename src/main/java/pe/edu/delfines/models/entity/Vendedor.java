@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "vendedores")
 public class Vendedor {
@@ -33,6 +35,7 @@ public class Vendedor {
 	@Column(name = "sueldo")
 	private Float sueldo;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="vendedor", fetch = FetchType.LAZY)
 	private List<Alquiler> alquileres;
 	

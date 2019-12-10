@@ -32,16 +32,17 @@ public class Alquiler {
 	@Column(length = 60)
 	private String observacion;
 	
+	@JsonIgnoreProperties("alquileres")
 	@ManyToOne
 	@JoinColumn(name="habitacion_id")
 	private Habitacion habitacion;
 	
-	
+	@JsonIgnoreProperties("alquileres")
 	@ManyToOne
 	@JoinColumn(name = "cliente_id")
 	private Cliente cliente;
 	
-	
+	@JsonIgnoreProperties("alquileres")
 	@ManyToOne
 	@JoinColumn(name = "vendedor_id")
 	private Vendedor vendedor;

@@ -42,7 +42,7 @@ public class Habitacion {
 	@Column(name = "observacion", length = 100)
 	private String observacion;
 	
-	
+	@JsonIgnore
 	@OneToMany(mappedBy="habitacion",fetch = FetchType.LAZY)
 	private List<Alquiler> alquileres;
 	

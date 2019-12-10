@@ -45,7 +45,7 @@ public class Cliente {
 	@Column(name = "observacion", length = 100)
 	private String observacion;
 	
-	
+	@JsonIgnore
 	@OneToMany(mappedBy="cliente", fetch = FetchType.LAZY)
 	private List<Alquiler> alquileres;
 	
