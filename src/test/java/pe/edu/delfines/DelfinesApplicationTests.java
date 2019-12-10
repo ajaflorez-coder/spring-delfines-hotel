@@ -51,8 +51,6 @@ class DelfinesApplicationTests {
 			raul.setObservacion("ninguna observacion");
 			raul.setSueldo("2200");
 			
-			raul = vendedorRepository.save(raul);
-			
 			Vendedor fernando = new Vendedor();
 			fernando.setId("N01");
 			fernando.setNombre("Fernando");
@@ -61,9 +59,25 @@ class DelfinesApplicationTests {
 			fernando.setObservacion("ninguna observacion");
 			fernando.setSueldo("2000");
 			
-			
+			raul = vendedorRepository.save(raul);
 			fernando = vendedorRepository.save(fernando);
 			
+			Alquiler primer = new Alquiler();
+			primer.setPrecio("2000");
+			primer.setFecha_entrada("20/05/2020");
+			primer.setFecha_salida("22/05/2020");
+			primer.setEstado("Reserva");
+			primer.setObservacion("Ninguna observacion");
+			
+			Alquiler segun = new Alquiler();
+			segun.setPrecio("2400");
+			segun.setFecha_entrada("24/06/2020");
+			segun.setFecha_salida("26/06/2020");
+			segun.setEstado("Reserva");
+			segun.setObservacion("Ninguna observacion");
+			
+			segun = alquilerRepository.save(segun);
+			primer = alquilerRepository.save(primer);
 			
 			Cliente ana = new Cliente();
 			ana.setDocumento("74125953");
@@ -72,7 +86,6 @@ class DelfinesApplicationTests {
 			ana.setLugarNacimiento("Piura");
 			ana.setSexo("Femenino");
 			ana.setObservacion("ninguna observacion");
-			ana = clienteRepository.save(ana);
 			
 			Cliente luisa = new Cliente();
 			luisa.setDocumento("741258473");
@@ -82,20 +95,18 @@ class DelfinesApplicationTests {
 			luisa.setSexo("Femenino");
 			luisa.setObservacion("ninguna observacion");
 			
+			ana = clienteRepository.save(ana);
 			luisa = clienteRepository.save(luisa);
-			
-			
 			
 			Tipo matrimonial = new Tipo();
 			matrimonial.setId("N01");
 			matrimonial.setNombre("Matrimonial");
 			
-			matrimonial = tipoRepository.save(matrimonial);
-			
 			Tipo estandar = new Tipo();
 			estandar.setId("N02");
 			estandar.setNombre("Estandar");
 			
+			matrimonial = tipoRepository.save(matrimonial);
 			estandar = tipoRepository.save(estandar);
 			
 			Habitacion one = new Habitacion();
@@ -103,64 +114,28 @@ class DelfinesApplicationTests {
 			one.setDescripcion("Habitacion para 2 personas");
 			one.setPrecio(1500f);
 			one.setObservacion("Ninguna Observacion");
-			one.setTipo(estandar);
-			
-			one = habitacionRepository.save(one);
 			
 			Habitacion two = new Habitacion();
 			two.setNumeroCamas(2);
 			two.setDescripcion("Habitacion para 2 personas");
 			two.setPrecio(2500f);
 			two.setObservacion("Ninguna Observacion");
-			two.setTipo(matrimonial);
 			
-			
+			one = habitacionRepository.save(one);
 			two = habitacionRepository.save(two);
 			
-			Alquiler primer = new Alquiler();
-			primer.setPrecio("2000");
-			primer.setFecha_entrada("20/05/2020");
-			primer.setFecha_salida("22/05/2020");
-			primer.setEstado("Reserva");
-			primer.setObservacion("Ninguna observacion");
+			
+			one.setTipo(estandar);
+			two.setTipo(matrimonial);
+			
 			primer.setVendedor(fernando);
-			primer.setCliente(luisa);
-			primer.setHabitacion(one);
-			
-			primer = alquilerRepository.save(primer);
-			
-			Alquiler segun = new Alquiler();
-			segun.setPrecio("2400");
-			segun.setFecha_entrada("24/06/2020");
-			segun.setFecha_salida("26/06/2020");
-			segun.setEstado("Reserva");
-			segun.setObservacion("Ninguna observacion");
 			segun.setVendedor(fernando);
+			
+			primer.setCliente(luisa);
 			segun.setCliente(ana);
+			
+			primer.setHabitacion(one);
 			segun.setHabitacion(two);
-			
-			segun = alquilerRepository.save(segun);
-			
-			
-
-		
-			
-		
-			
-			
-		
-			
-			
-			
-			
-			
-			
-			
-		
-			
-			
-			
-			
 			
 			alquilerRepository.save(primer);
 			alquilerRepository.save(segun);
