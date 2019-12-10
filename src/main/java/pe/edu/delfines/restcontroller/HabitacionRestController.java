@@ -107,7 +107,7 @@ public class HabitacionRestController {
 		}
 	}
 	
-	@PostMapping( path = "/{id}/pacientes",
+	@PostMapping( path = "/{id}/alquileres",
 			consumes = MediaType.APPLICATION_JSON_VALUE, 
 			produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity< Alquiler > saveAlquiler(
