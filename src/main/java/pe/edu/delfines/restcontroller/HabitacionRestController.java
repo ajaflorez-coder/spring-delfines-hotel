@@ -90,7 +90,7 @@ public class HabitacionRestController {
 		}
 	}
 	@GetMapping(path = "/{id}/alquileres")
-	public ResponseEntity<List<Alquiler>> fetchPaciente(
+	public ResponseEntity<List<Alquiler>> fetchAlquiler(
 			@PathVariable("id") Integer id){
 		try {
 			Optional<Habitacion> optional = habitacionService.findById(id);
