@@ -47,7 +47,7 @@ public class ClienteRestController {
 		try {
 			return clienteService.findById(id);
 		} catch (Exception e) {
-			throw new ErrorInvalidFieldException("Error al devolver Alumno por Id");
+			return null;
 		}
 	 }
 	
