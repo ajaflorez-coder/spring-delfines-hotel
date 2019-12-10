@@ -37,7 +37,7 @@ public class Habitacion {
 	private Tipo tipo;
 	
 	@JsonIgnoreProperties("habitacion")
-	@OneToMany(mappedBy = "habitacion")
+	@OneToMany(mappedBy = "habitacion",fetch = FetchType.LAZY)
 	private List<Alquiler> alquileres;
 	
 	
