@@ -2,9 +2,9 @@
 spring:
   datasource:
     driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
-    url: jdbc:sqlserver://localhost:1433;databasename=delfines
+    url: jdbc:sqlserver://localhost:51560;databasename=delfines
     username: sa
-    password: 12345678
+    password: paccbet&2@
   jpa:
     database: sql-server
     hibernate:
