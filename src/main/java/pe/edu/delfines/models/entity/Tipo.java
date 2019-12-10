@@ -9,6 +9,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name = "tipos")
 public class Tipo {
@@ -16,10 +19,10 @@ public class Tipo {
 	@Id
 	@Column(name = "id", length = 4)
 	private String id;
-	
 	@Column(name = "nombre", length = 30)
 	private String nombre;
 	
+	@JsonIgnoreProperties("tipo")
 	@OneToMany(mappedBy = "tipo")
 	private List<Habitacion> habitaciones;
 	
