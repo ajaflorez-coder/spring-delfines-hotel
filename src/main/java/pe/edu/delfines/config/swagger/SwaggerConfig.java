@@ -15,7 +15,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig {
-	public static final Contact DEFAULT_CONTACT = new Contact("Juan Flores", 
+	public static final Contact DEFAULT_CONTACT = new Contact("Jean Pierre", 
 			"https://github.com/lccogu/", "lccogu@gmail.com");
 	
 	@SuppressWarnings("rawtypes")
