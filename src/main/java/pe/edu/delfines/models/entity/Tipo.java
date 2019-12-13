@@ -2,19 +2,20 @@ package pe.edu.delfines.models.entity;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "tipos")
 public class Tipo {
 
 	@Id
-	@Column(name = "id", length = 4)
+	@Column(name = "id", length = 10)
 	private String id;
 	
 	@Column(name = "nombre", length = 30)
