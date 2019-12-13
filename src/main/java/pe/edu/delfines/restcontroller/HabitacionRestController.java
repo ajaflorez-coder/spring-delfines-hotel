@@ -44,7 +44,7 @@ public class HabitacionRestController {
 	
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, 
 			produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity< Habitacion > saveMedico(@RequestBody Habitacion habitacion) {
+	public ResponseEntity< Habitacion > saveHabitacion(@RequestBody Habitacion habitacion) {
 		try {
 			Habitacion newHabitacion = habitacionService.save(habitacion);
 			return new ResponseEntity< Habitacion >(newHabitacion, HttpStatus.CREATED);
@@ -76,7 +76,7 @@ public class HabitacionRestController {
 	}
 	
 	@DeleteMapping(path = "/{id}")
-	public ResponseEntity<Habitacion> deleteMedico(@PathVariable("id") Integer id) {
+	public ResponseEntity<Habitacion> deleteHabitacion(@PathVariable("id") Integer id) {
 		try {			
 			Optional<Habitacion> optional = habitacionService.findById(id);
 			if(optional.isPresent()) {
@@ -128,6 +128,8 @@ public class HabitacionRestController {
 			return new ResponseEntity< Alquiler >(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
+	
+	
 	
 	@GetMapping(path = "/menorprecio/{precio}", 
 			produces = MediaType.APPLICATION_JSON_VALUE)

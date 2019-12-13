@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "alquileres")
@@ -18,30 +19,32 @@ public class Alquiler {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@Column(name = "precio", length = 10)
+	@Column(name = "precio", length = 50)
 	private String precio;
 	
-	@Column(name = "fecha_entrada", length = 20)
+	@Column(name = "fecha_entrada", length = 50)
 	private String fecha_entrada;
 	
-	@Column(name = "fecha_salida", length = 20)
+	@Column(name = "fecha_salida", length = 50)
 	private String fecha_salida;
 	
-	@Column(name = "estado", length = 10)
+	@Column(name = "estado", length = 50)
 	private String estado;
 	
 	@Column(name = "observacion", length = 100)
 	private String observacion;
 	
-	
+	@JsonIgnoreProperties("alquileres")
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "vendedor_id")
 	private Vendedor vendedor;
 	
+	@JsonIgnoreProperties("alquileres")
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "cliente_id")
 	private Cliente cliente;
 	
+	@JsonIgnoreProperties("alquileres")
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "habitacion_id")
 	private Habitacion habitacion;

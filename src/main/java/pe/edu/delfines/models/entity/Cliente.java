@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,6 +13,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "clientes")
@@ -34,14 +37,14 @@ public class Cliente {
 	@Column(name = "lugar_nacimiento", length = 50)
 	private String lugarNacimiento;
 	
-	@Column(name = "sexo", length = 1)
+	@Column(name = "sexo", length = 50)
 	private String sexo;
 	
 	@Column(name = "observacion", length = 100)
 	private String observacion;
 	
-	
-	@OneToMany(mappedBy = "cliente")
+	@JsonIgnore
+	@OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY)
 	private List<Alquiler> alquileres;
 	
 	

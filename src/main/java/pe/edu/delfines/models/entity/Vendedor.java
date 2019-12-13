@@ -8,12 +8,14 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "vendedores")
 public class Vendedor {
 	
 	@Id
-	@Column(name = "id", length = 4)
+	@Column(name = "id", length = 10)
 	private String id;
 	
 	@Column(name = "nombre", length = 60)
@@ -22,7 +24,7 @@ public class Vendedor {
 	@Column(name = "direccion", length = 70)
 	private String direccion;
 
-	@Column(name = "telefono", length = 20)
+	@Column(name = "telefono", length = 50)
 	private String telefono;
 	
 	@Column(name = "observacion", length = 100)
@@ -31,6 +33,7 @@ public class Vendedor {
 	@Column(name = "sueldo")
 	private String sueldo;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "vendedor")
 	private List<Alquiler> alquileres;
 	
